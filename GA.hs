@@ -27,3 +27,11 @@ getChromosomeWithMinFitness :: Population a ->  Evaluated a
 getChromosomeWithMinFitness [] = error "Error, Empty Population."
 getChromosomeWithMinFitness p = head (filter ((==) minVal . fst) p) where minVal = minimum (map fst p)
 
+randomList :: Seed -> [Double]
+randomList seed = randoms (mkStdGen seed) :: [Double]
+
+randomListLengthN :: Seed -> Int -> [Double]
+randomListLengthN seed n = take n (randoms (mkStdGen seed) :: [Double])
+
+randomNumberLessthanN :: Seed -> Int -> Int
+randomNumberLessthanN seed n = floor (head (randomListLengthN seed 1) * fromIntegral(n))
