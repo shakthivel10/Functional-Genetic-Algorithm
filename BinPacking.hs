@@ -19,4 +19,15 @@ binMakeListOfChromosomes n w s size = (binMakeRandomChromosome n w (randomNumber
 binMakeRandomChromosome :: NumberOfBins -> Weights -> Seed -> BinPackChromosome
 binMakeRandomChromosome n w s = take (length w) ([floor ((fromIntegral n)* e) | e <- (randomList s)])
 
+binFitness :: NumberOfBins ->Weights -> BinPackChromosome -> FitnessValue
+binFitness n w b = let totalWeights = (totalWeightsInBins n w b) in ((maximum totalWeights) - (minimum totalWeights))
 
+totalWeightsInBins :: NumberOfBins -> Weights -> BinPackChromosome -> [Int]
+totalWeightsInBins n w b = totalWeightsInBinsHelper 0 n w b
+
+totalWeightsInBinsHelper :: Int -> NumberOfBins -> Weights -> BinPackChromosome -> [Int]
+totalWeightsInBinsHelper currentIndex n w b | currentIndex == n = []
+                                            | otherwise = (sumOfWeightsInCurrentIndex currentIndex w b):(totalWeightsInBinsHelper (currentIndex+1) n w b)
+
+sumOfWeightsInCurrentIndex :: Int -> Weights -> BinPackChromosome -> Int
+sumOfWeightsInCurrentIndex currentIndex w b = fromInteger(sum (zipWith (*) (map (\x -> if x == currentIndex then 1 else 0) b) w))
