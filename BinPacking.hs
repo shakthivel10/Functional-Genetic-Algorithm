@@ -49,3 +49,21 @@ binEvolutionHelper n w c s p = let childChromosome = (binCrossOver s (getChromos
 
 binPackGASolve :: NumberOfBins -> Weights -> Seed -> Count -> Size -> Evaluated BinPackChromosome
 binPackGASolve n w seed c size = binpackga n w seed c (binmakepop n w seed size)
+{--
+*BinPacking> binPackGASolve 3 [1,2,3,4,5] 4 20 20
+(0,[2,1,1,2,0]) -- Optimal
+*BinPacking> binPackGASolve 4 [1,2,3,5,4,5] 1 40 40
+(5,[2,2,0,3,1,0])
+*BinPacking> binPackGASolve 4 [1,2,3,5,4,5] 1 100 100
+(0,[2,0,0,1,2,3]) -- Optimal
+*BinPacking> binPackGASolve 5 [1,2,3,5,6,4,5] 1 50 100
+(9,[1,1,2,1,0,3,3])
+*BinPacking> binPackGASolve 5 [1,2,3,5,6,4,5] 3 50 100
+(1,[2,0,0,4,3,2,1]) -- Optimal
+*BinPacking> binPackGASolve 5 [1,2,3,5,6,4,5,1,3] 7 600 200
+(10,[3,1,0,4,4,1,2,1,1])
+*BinPacking> binPackGASolve 5 [1,2,3,5,6,4,5,1,3] 7 800 800
+(7,[3,0,4,0,1,4,2,3,1])
+*BinPacking> binPackGASolve 5 [1,2,3,5,6,4,5,1,3] 7 800 1000
+(0,[2,1,4,0,3,1,2,0,4]) -- Optimal 
+--}
