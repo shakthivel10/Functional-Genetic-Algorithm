@@ -38,3 +38,13 @@ tspFitnessHelper (x:xs) = (euclidianDistance x (head xs)) + tspFitnessHelper (xs
 euclidianDistance :: Coordinate -> Coordinate -> Int 
 euclidianDistance  (x1,y1) (x2,y2) =  floor (sqrt (fromIntegral ((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2))))
 
+tspCrossOver :: Seed -> TSPChromosome -> TSPChromosome -> TSPChromosome
+tspCrossOver s parent1 parent2 = nub (mixChromosomes s parent1 parent2)
+
+mixChromosomes :: Seed -> TSPChromosome -> TSPChromosome -> TSPChromosome
+mixChromosomes s [] [] = [] 
+mixChromosomes s [] p2 = p2 
+mixChromosomes s p1 [] = p1 
+mixChromosomes s p1 p2 | even (randomNumberLessthanN s 1000) = (head p1) : mixChromosomes (randomNumberLessthanN s 99) (tail p1) p2
+                        | otherwise = (head p2) : mixChromosomes (randomNumberLessthanN s 199) p1 (tail p2)
+
