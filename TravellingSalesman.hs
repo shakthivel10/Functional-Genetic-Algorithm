@@ -50,6 +50,20 @@ mixChromosomes s p1 p2 | even (randomNumberLessthanN s 1000) = (head p1) : mixCh
 
 tspGASolve :: TSPChromosome -> Seed -> Count -> Size -> Evaluated TSPChromosome
 tspGASolve ci seed count size = tspGA seed count (tspMakePop seed size ci)
+{--
+*TravellingSalesman> tspGASolve [(2,2),(5,5),(3,3),(1,1),(7,7)] 3 2 2
+(20,[(3,3),(5,5),(1,1),(2,2),(7,7)])
+*TravellingSalesman> tspGASolve [(2,2),(5,5),(3,3),(1,1),(7,7)] 3 10 10
+(14,[(2,2),(1,1),(5,5),(7,7),(3,3)]) -- Optimal
+*TravellingSalesman> tspGASolve [(1,2),(6,9),(2,3),(11,15),(3,4),(12,14),(0,0)] 3 10  10
+(49,[(11,15),(3,4),(2,3),(1,2),(0,0),(12,14),(6,9)])
+*TravellingSalesman> tspGASolve [(1,2),(6,9),(2,3),(11,15),(3,4),(12,14),(0,0)] 3 20  10
+(49,[(11,15),(3,4),(2,3),(1,2),(0,0),(12,14),(6,9)])
+*TravellingSalesman> tspGASolve [(1,2),(6,9),(2,3),(11,15),(3,4),(12,14),(0,0)] 3 100  10
+(49,[(11,15),(3,4),(2,3),(1,2),(0,0),(12,14),(6,9)])
+*TravellingSalesman> tspGASolve [(1,2),(6,9),(2,3),(11,15),(3,4),(12,14),(0,0)] 3 200  100
+(34,[(1,2),(3,4),(6,9),(11,15),(12,14),(2,3),(0,0)]) -- Optimal
+--}
 
 tspGA :: Seed -> Count -> Population TSPChromosome -> Evaluated TSPChromosome
 tspGA s c p = tspGAHelper s c (100000, []) p
