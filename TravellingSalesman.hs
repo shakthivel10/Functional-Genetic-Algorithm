@@ -48,3 +48,20 @@ mixChromosomes s p1 [] = p1
 mixChromosomes s p1 p2 | even (randomNumberLessthanN s 1000) = (head p1) : mixChromosomes (randomNumberLessthanN s 99) (tail p1) p2
                         | otherwise = (head p2) : mixChromosomes (randomNumberLessthanN s 199) p1 (tail p2)
 
+tspGASolve :: TSPChromosome -> Seed -> Count -> Size -> Evaluated TSPChromosome
+tspGASolve ci seed count size = tspGA seed count (tspMakePop seed size ci)
+
+tspGA :: Seed -> Count -> Population TSPChromosome -> Evaluated TSPChromosome
+tspGA s c p = tspGAHelper s c (100000, []) p
+
+tspGAHelper :: Seed -> Count -> Evaluated TSPChromosome -> Population TSPChromosome -> Evaluated TSPChromosome
+tspGAHelper s 0 currentBest p = compareChromosomes currentBest (getChromosomeWithMinFitness p)  
+tspGAHelper s c currentBest p = let nextGeneration = (tspEvolution s p) in tspGAHelper (randomNumberLessthanN s 1000) (c-1) (compareChromosomes currentBest (getChromosomeWithMinFitness nextGeneration)) nextGeneration
+
+tspEvolution :: Seed -> Population TSPChromosome -> Population TSPChromosome
+tspEvolution s p =  tspEvolutionHelper (fromIntegral (length p)) s p
+
+tspEvolutionHelper :: Count -> Seed -> Population TSPChromosome -> Population TSPChromosome
+tspEvolutionHelper 0 s p = [] 
+tspEvolutionHelper c s p = let childChromosome = (tspCrossOver s (getChromosome ( p!! (randomNumberLessthanN (randomNumberLessthanN (s+99) 99) (length p)) )) (getChromosome (p!!(randomNumberLessthanN (randomNumberLessthanN s 100) (length p)))) ) in ((tspFitness childChromosome), childChromosome) : (tspEvolutionHelper (c-1) (randomNumberLessthanN (s+(fromIntegral c)) 100) p)
+
