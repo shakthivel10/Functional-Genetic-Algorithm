@@ -12,6 +12,15 @@ A crossover in the case of the travelling salesman problem is performed by creat
 
 The argument required for the tspSolver are: the list of points ,in any order. A seed to generate random numbers, ‘count’ which represents the number of evolutions to be simulated and ‘size’ which represents the size of the population.
 
+#### Examples
+
+tspGASolve [(2,2),(5,5),(3,3),(1,1),(7,7)] 3 2 2(20,[(3,3),(5,5),(1,1),(2,2),(7,7)])
+tspGASolve [(2,2),(5,5),(3,3),(1,1),(7,7)] 3 10 10(14,[(2,2),(1,1),(5,5),(7,7),(3,3)]) -- Optimal
+tspGASolve [(1,2),(6,9),(2,3),(11,15),(3,4),(12,14),(0,0)] 3 10 10(49,[(11,15),(3,4),(2,3),(1,2),(0,0),(12,14),(6,9)])
+tspGASolve [(1,2),(6,9),(2,3),(11,15),(3,4),(12,14),(0,0)] 3 20 10(49,[(11,15),(3,4),(2,3),(1,2),(0,0),(12,14),(6,9)])
+tspGASolve [(1,2),(6,9),(2,3),(11,15),(3,4),(12,14),(0,0)] 3 100 10(49,[(11,15),(3,4),(2,3),(1,2),(0,0),(12,14),(6,9)])
+tspGASolve [(1,2),(6,9),(2,3),(11,15),(3,4),(12,14),(0,0)] 3 200 100(34,[(1,2),(3,4),(6,9),(11,15),(12,14),(2,3),(0,0)]) -- Optimal
+
 **Bin-packing problem**
 
 The following variant of the bin-packing problem is considered.
@@ -28,7 +37,7 @@ The binPackingSolver takes in the following arguments: number of bins, list of w
 
 The output type returned is an Evaluated Chromosome, which is a tuple of the fitnessValue of the chromosome and the chromosome itself.
 
-Below are some sample outputs.
+#### Examples
 
 binPackGASolve 3 [1,2,3,4,5] 4 20 20
 (0,[2,1,1,2,0]) -- Optimal
