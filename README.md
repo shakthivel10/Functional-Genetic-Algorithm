@@ -18,7 +18,7 @@ A crossover is performed by choosing a random number between [0, w) and concaten
 
 The binPackingSolver takes in the following arguments: number of bins, list of weights, a seed to generate random numbers, ‘count’ which represents the number of evolutions to be simulated and ‘size’ which represents the size of the population.
 
-Below are some sample outputs.
+#### Examples
 
 binPackGASolve 3 [1,2,3,4,5] 4 20 20
 (0,[2,1,1,2,0]) -- Optimal
