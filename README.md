@@ -2,7 +2,15 @@
 
 Genetic Algorithms provide a method of creating approximate solutions to a wide class of intractable problems. This is an implementation of a Genetic Algorithm in Haskell, a the Functional Language, used to solve the Travelling Salesman Problem and the Bin Packing Problem.
 
-  
+  **Travelling Salesman Problem**
+
+The paper considers the following variant of the travelling salesman problem: The input is a list of points represented by the x and y co-ordinates represented as tuples. Hence a chromosome for the travelling salesman problem is a list of tuples, representing the co-ordinates on the Point in 2D space.
+
+The fitness function is nothing but the sum of Euclidian Distances between adjacent points in the chromosome. This also includes the distance between the first and last points in the chromosome, because the chromosome has to be interpreted as a circular list as the Travelling Salesman is supposed to return to the point/city from where he started.
+
+A crossover in the case of the travelling salesman problem is performed by creating a new list by choosing either of the parent randomly, with equal probability and taking the first element of the chosen list to add it to our new list. We further eliminate duplicates from the list, to generate a new offspring.
+
+The argument required for the tspSolver are: the list of points ,in any order. A seed to generate random numbers, ‘count’ which represents the number of evolutions to be simulated and ‘size’ which represents the size of the population.
 
 **Bin-packing problem**
 
@@ -18,7 +26,9 @@ A crossover is performed by choosing a random number between [0, w) and concaten
 
 The binPackingSolver takes in the following arguments: number of bins, list of weights, a seed to generate random numbers, ‘count’ which represents the number of evolutions to be simulated and ‘size’ which represents the size of the population.
 
-#### Examples
+The output type returned is an Evaluated Chromosome, which is a tuple of the fitnessValue of the chromosome and the chromosome itself.
+
+Below are some sample outputs.
 
 binPackGASolve 3 [1,2,3,4,5] 4 20 20
 (0,[2,1,1,2,0]) -- Optimal
