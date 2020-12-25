@@ -17,3 +17,29 @@ The fitness function for this problem is calculated by summing the weight held i
 A crossover is performed by choosing a random number between [0, w) and concatenating the part on the left side of this integer on the first parent and the right side of this integer on the second parent, to generate a new offspring.
 
 The binPackingSolver takes in the following arguments: number of bins, list of weights, a seed to generate random numbers, ‘count’ which represents the number of evolutions to be simulated and ‘size’ which represents the size of the population.
+
+Below are some sample outputs.
+
+binPackGASolve 3 [1,2,3,4,5] 4 20 20
+(0,[2,1,1,2,0]) -- Optimal
+
+binPackGASolve 4 [1,2,3,5,4,5] 1 40 40
+(5,[2,2,0,3,1,0])
+
+binPackGASolve 4 [1,2,3,5,4,5] 1 100 100
+(0,[2,0,0,1,2,3]) -- Optimal
+
+binPackGASolve 5 [1,2,3,5,6,4,5] 1 50 100
+(9,[1,1,2,1,0,3,3])
+
+binPackGASolve 5 [1,2,3,5,6,4,5] 3 50 100
+(1,[2,0,0,4,3,2,1]) -- Optimal
+
+binPackGASolve 5 [1,2,3,5,6,4,5,1,3] 7 600 200
+(10,[3,1,0,4,4,1,2,1,1])
+
+binPackGASolve 5 [1,2,3,5,6,4,5,1,3] 7 800 800
+(7,[3,0,4,0,1,4,2,3,1])
+
+binPackGASolve 5 [1,2,3,5,6,4,5,1,3] 7 800 1000
+(0,[2,1,4,0,3,1,2,0,4]) -- Optimal
