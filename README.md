@@ -10,7 +10,27 @@ The fitness function is nothing but the sum of Euclidian distances between adjac
 
 A crossover in the case of the Traveling Salesman problem is performed by creating a new list by choosing either of the parent randomly, with equal probability and taking the first element in the chosen list to add it to our new list. We further eliminate duplicates from the list, to generate a new offspring.
 
+The arguments required for the tspSolver are: the list of points, in any order, a seed to generate random numbers, the number of evolutions to be simulated, and the size of the population.
 
+#### Examples
+
+tspGASolve [(2,2),(5,5),(3,3),(1,1),(7,7)] 3 2 2
+(20,[(3,3),(5,5),(1,1),(2,2),(7,7)]) -- Not optimal
+
+tspGASolve [(2,2),(5,5),(3,3),(1,1),(7,7)] 3 10 10
+(14,[(2,2),(1,1),(5,5),(7,7),(3,3)]) -- Optimal
+
+tspGASolve [(1,2),(6,9),(2,3),(11,15),(3,4),(12,14),(0,0)] 3 10 10
+(49,[(11,15),(3,4),(2,3),(1,2),(0,0),(12,14),(6,9)]) -- Not optimal
+
+tspGASolve [(1,2),(6,9),(2,3),(11,15),(3,4),(12,14),(0,0)] 3 20 10
+(49,[(11,15),(3,4),(2,3),(1,2),(0,0),(12,14),(6,9)]) -- Not optimal
+
+tspGASolve [(1,2),(6,9),(2,3),(11,15),(3,4),(12,14),(0,0)] 3 100 10
+(49,[(11,15),(3,4),(2,3),(1,2),(0,0),(12,14),(6,9)]) -- Not optimal
+
+tspGASolve [(1,2),(6,9),(2,3),(11,15),(3,4),(12,14),(0,0)] 3 200 100
+(34,[(1,2),(3,4),(6,9),(11,15),(12,14),(2,3),(0,0)]) -- Optimal
 
 **Bin-packing problem**
 
