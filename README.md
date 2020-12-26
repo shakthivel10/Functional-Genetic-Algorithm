@@ -6,7 +6,7 @@ Genetic Algorithms provide a method of creating approximate solutions to a wide 
 
 The the following variant of the Traveling Salesman problem is considered here: The input is a list of points represented by the x and y co-ordinates represented as tuples. Hence a chromosome for the Traveling Salesman problem is a list of tuples, representing the co-ordinates of the points in 2D space.
 
-The fitness function is nothing but the sum of Euclidian distances between adjacent points in the chromosome. This should also includes the distance between the first and last points in the chromosome, because the chromosome has to be interpreted as a circular list as the Traveling Salesman is supposed to return to the point/city from where he started.
+The fitness function is nothing but the sum of Euclidian distances between adjacent points in the chromosome. This should also includes the distance between the first and last points in the chromosome, because the chromosome has to be interpreted as a circular list as the Traveling Salesman is returns to the point/city from which he started.
 
 A crossover in the case of the Traveling Salesman problem is performed by creating a new list by choosing either of the parent randomly, with equal probability and taking the first element in the chosen list to add it to our new list. We further eliminate duplicates from the list, to generate a new offspring.
 
