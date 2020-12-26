@@ -10,7 +10,7 @@ The fitness function is nothing but the sum of Euclidian distances between adjac
 
 A crossover in the case of the Traveling Salesman problem is performed by creating a new list by choosing either of the parent randomly, with equal probability and taking the first element in the chosen list to add it to our new list. We further eliminate duplicates from the list, to generate a new offspring.
 
-The arguments required for the tspSolver are: the list of points, in any order, a seed to generate random numbers, the number of evolutions to be simulated, and the size of the population.
+The arguments required for the tspSolver are: the list of points, in any order, a seed to generate random numbers, the number of evolutions to be simulated, and the size of the initial population.
 
 #### Examples
 
@@ -44,7 +44,7 @@ The fitness function for this problem is calculated by summing the weight held i
 
 A crossover is performed by choosing a random number between [0, w) and concatenating the part on the left side of this integer on the first parent and the right side of this integer on the second parent, to generate a new offspring.
 
-The binPackingSolver takes in the following arguments: number of bins, list of weights, a seed to generate random numbers, ‘count’ which represents the number of evolutions to be simulated and ‘size’ which represents the size of the population.
+The binPackingSolver takes in the following arguments: number of bins, list of weights, a seed to generate random numbers, the number of evolutions to be simulated, and  the size of the initial population.
 
 The output type returned is an Evaluated Chromosome, which is a tuple of the fitnessValue of the chromosome and the chromosome itself.
 
